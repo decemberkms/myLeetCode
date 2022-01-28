@@ -1,0 +1,121 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        bool flag = false;
+        
+        ListNode *p1 = l1;
+        ListNode *p2 = l2;
+        
+        ListNode *firstp3 = new ListNode();
+        ListNode *lastp3 = new ListNode();
+        ListNode *temp;
+
+        temp = new ListNode;
+        
+        
+        if (flag == false)   
+            temp->val = p1->val + p2->val;
+        else
+            temp->val = p1->val + p2->val + 1;
+        
+        temp->next = nullptr;
+        
+        firstp3->next = temp;            
+        firstp3 = temp;
+        lastp3 = firstp3;
+        
+        p1 = p1->next;
+        p2 = p2->next; 
+        
+        if (lastp3->val > 9){
+            flag = true;
+            lastp3->val -= 10;
+        } else
+            flag = false;
+            
+        while (p1 != nullptr && p2 != nullptr){
+            temp = new ListNode();
+            
+            if (flag == false)   
+                temp->val = p1->val + p2->val;
+            else
+                temp->val = p1->val + p2->val + 1;
+            
+            temp->next =nullptr;
+            
+            lastp3->next = temp;            
+            lastp3 = temp;
+            
+            if (lastp3->val > 9){
+                flag = true;
+                lastp3->val -= 10;
+            } else
+                flag = false;
+            
+            p1 = p1->next;
+            p2 = p2->next;            
+        }
+        
+        while(p1 != nullptr){
+            temp = new ListNode();
+            if (flag == true){
+                temp->val = p1->val + 1;                
+            } else
+                temp->val = p1->val;            
+            
+            temp->next = nullptr;
+            
+            lastp3->next = temp;            
+            lastp3 = temp;
+            
+            if (lastp3->val > 9){
+                flag = true;
+                lastp3->val -= 10;
+            } else
+                flag = false;
+            
+            p1 = p1->next;
+        }
+        while(p2 != nullptr){
+            temp = new ListNode();
+            if (flag == true){
+                temp->val = p2->val + 1;                
+            } else
+                temp->val = p2->val;            
+            
+            temp->next = nullptr;
+            
+            lastp3->next = temp;            
+            lastp3 = temp;
+            
+            if (lastp3->val > 9){
+                flag = true;
+                lastp3->val -= 10;
+            } else
+                flag = false;
+            
+            p2 = p2->next;
+        }
+        
+        if (flag == true){
+            temp = new ListNode();
+            temp->val = 1;
+            temp->next = nullptr;
+            lastp3->next = temp;            
+            lastp3 = temp;
+        }
+            
+        
+        return firstp3;
+    }
+};

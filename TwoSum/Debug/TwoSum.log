@@ -1,4 +1,0 @@
-﻿  TwoSum.cpp
-C:\Users\Min\source\repos\myLeetCode\TwoSum\TwoSum.cpp(11,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Min\source\repos\myLeetCode\TwoSum\TwoSum.cpp(13,31): warning C4018: '<': signed/unsigned mismatch
-  TwoSum.vcxproj -> C:\Users\Min\source\repos\myLeetCode\Debug\TwoSum.exe
