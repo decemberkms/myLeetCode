@@ -1,0 +1,21 @@
+#include <algorithm>
+class Solution {
+public:
+    bool isPalandrome(string s) {
+	string copy(s);
+	std::reverse(copy.begin(), copy.end());
+	if (s == copy)
+		return 1;
+	return 0;
+    }
+
+    string longestPalindrome(string s) {
+        
+        for (auto ele:s){
+            
+        }
+        
+        isPalandrome(s);
+        
+    }
+};
