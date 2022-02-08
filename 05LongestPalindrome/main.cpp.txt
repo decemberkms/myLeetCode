@@ -1,21 +1,48 @@
-#include <algorithm>
+#include <string.h>
 class Solution {
 public:
     bool isPalandrome(string s) {
-	string copy(s);
-	std::reverse(copy.begin(), copy.end());
-	if (s == copy)
-		return 1;
-	return 0;
+        int ssize = s.length();
+
+        if (ssize % 2 == 0) {
+            for (int i = 0, j = ssize - 1; i < ssize / 2; ++i, --j) {
+                if (s[i] == s[j])
+                    continue;
+                else
+                    return 0;
+            }
+        }
+        else {
+            for (int i = 0, j = ssize - 1; i <= (ssize - 1)/2; ++i, --j) {
+                if (s[i] == s[j])
+                    continue;
+                else
+                    return 0;
+            }
+        }
+
+        return 1;
     }
 
     string longestPalindrome(string s) {
+        int ssize = s.length();
         
-        for (auto ele:s){
-            
+        string holder = "a";
+        
+        for (int i = 0; i < ssize - 1; ++i){
+            for (int j = 2; j <= ssize - i; ++j){
+                string temp = s.substr(i, j);
+                
+                if(isPalandrome(temp)){
+                    if (temp.length() > holder.length())
+                        holder = temp;
+                }
+                    
+                
+            }
         }
         
-        isPalandrome(s);
+        return holder;
         
     }
 };
